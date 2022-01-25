@@ -16,13 +16,22 @@ public class Account {
     }
 
     public void deposit(long amount) {
-        // TODO: if amount is negative - throw IllegalArgumentException
-        balance += amount;
+        if (amount < 0) {
+            throw new IllegalArgumentException("amount cannot be less than 0");
+        } else {
+            balance += amount;
+        }
     }
 
     public void withdraw(long amount) {
-        // TODO: if amount is negative - throw IllegalArgumentException
-        // TODO: if amount higher than balance - throw NoManyEnoughException
-        balance -= amount;
+        if (amount < 0) {
+            throw new IllegalArgumentException("amount cannot be less than 0");
+        } else {
+            if (amount > balance) {
+                throw new NotMoneyEnoughException("amount cannot be less than balance");
+            } else {
+                balance -= amount;
+            }
+        }
     }
 }
